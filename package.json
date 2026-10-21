@@ -9,7 +9,8 @@
     "start": "vite build && node server/index.ts",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "serve": "node server/index.ts"
   },
   "dependencies": {
     "postprocessing": "6.39.5",
@@ -22,5 +23,8 @@
     "@types/ws": "^8.18.2",
     "typescript": "5.9.3",
     "vite": "8.3.5"
+  },
+  "engines": {
+    "node": ">=23.6"
   }
 }
