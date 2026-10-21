@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hollow Manor</title>
+    <meta name="description" content="A spooky Halloween hide and seek in a haunted manor." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@600;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="hud">
+      <div id="clock"><span id="phase"></span><span id="timer">0:20</span></div>
+      <div id="kids"></div>
+      <div id="sneak">Sneaking · silent</div>
+      <div id="lantern">F · Lantern on</div>
+      <div id="prompt"></div>
+      <div id="message"></div>
+      <div id="danger"></div>
+      <div id="peek"></div>
+      <div id="blind"><span>You are the Seeker. Eyes closed…</span><b id="blind-num">20</b><small>Hiders are scattering. Listen.</small></div>
+    </div>
+
+    <section id="menu" class="screen">
+      <div class="panel">
+        <h1>Hollow Manor</h1>
+        <p class="tag">Hide and seek in a haunted house. Footsteps are your only warning.</p>
+        <input id="name" class="field" maxlength="14" placeholder="Your name" autocomplete="off" />
+        <div class="modes">
+          <div class="mode">
+            <h3>With friends</h3>
+            <button id="create" class="btn">Create room</button>
+            <div class="join">
+              <input id="code" class="field code" maxlength="4" placeholder="CODE" autocomplete="off" />
+              <button id="join" class="btn ghost">Join</button>
+            </div>
+          </div>
+          <div class="mode">
+            <h3>Solo vs computer</h3>
+            <button id="solo-hide" class="btn ghost">Hide</button>
+            <button id="solo-seek" class="btn ghost">Seek</button>
+          </div>
+        </div>
+        <p id="menu-error" class="error" role="alert"></p>
+        <div class="controls">
+          <div><kbd>WASD</kbd> move</div>
+          <div><kbd>Mouse</kbd> look</div>
+          <div><kbd>Shift</kbd> sneak (silent)</div>
+          <div><kbd>E</kbd> door / hide / search</div>
+          <div><kbd>F</kbd> lantern on/off</div>
+          <div><kbd>Click</kbd> grab (Seeker)</div>
+        </div>
+        <div class="settings">
+          <label>Quality
+            <select id="quality">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </label>
+          <label>Volume <input id="volume" type="range" min="0" max="1.5" step="0.05" value="0.9" /></label>
+          <label>Mouse <input id="sens" type="range" min="8" max="50" step="1" value="22" /></label>
+        </div>
+        <p class="hint">Headphones recommended. When lanterns flicker, the Seeker is close.</p>
+      </div>
+    </section>
+
+    <section id="lobby" class="screen">
+      <div class="panel">
+        <p class="eyebrow">Room code</p>
+        <h1 id="lobby-code" class="code-big">----</h1>
+        <button id="invite" class="btn ghost small-btn">Copy invite link</button>
+        <ul id="lobby-players"></ul>
+        <p id="lobby-wait" class="tag"></p>
+        <button id="start" class="btn">Start game</button>
+        <p><button id="leave" class="link">Leave room</button></p>
+      </div>
+    </section>
+
+    <section id="pause" class="screen">
+      <div class="panel small">
+        <h2 id="pause-title">Paused</h2>
+        <button id="resume" class="btn">Resume</button>
+      </div>
+    </section>
+
+    <section id="end" class="screen">
+      <div class="panel">
+        <h1 id="end-title"></h1>
+        <p class="tag" id="end-sub"></p>
+        <div id="end-stats"></div>
+        <button id="again" class="btn">Play again</button>
+        <p><button id="to-menu" class="link">Main menu</button></p>
+      </div>
+    </section>
+
+    <div id="loading"><span>Unlocking the manor…</span></div>
+    <div id="stats"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
